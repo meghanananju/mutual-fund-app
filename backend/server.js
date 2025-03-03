@@ -5,7 +5,7 @@ const bodyParser = require("body-parser");
 
 const authRoutes = require("./routes/authRoute");
 const fundRoutes = require("./routes/fundRoutes");
-
+require("./models/database")
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
