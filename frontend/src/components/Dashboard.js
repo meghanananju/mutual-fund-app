@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
     const [funds, setFunds] = useState([]);
+    const [error, setError] = useState("");
+    const [successMessage, setSuccessMessage] = useState("");
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -18,24 +20,50 @@ const Dashboard = () => {
     const fetchFunds = async (token) => {
         try {
             const res = await axios.get(`${process.env.REACT_APP_API_URL}/funds/fetchFunds`, {
-                headers: { Authorization: token },
+                headers: { Authorization: `Bearer ${token}` },
             });
             setFunds(res.data.funds);
         } catch (error) {
-            alert("Error fetching funds");
+            setError("Error fetching funds");
+            setTimeout(() => {
+                setError("");
+            }, 2000);
         }
     };
 
-    const handleLogout = () => {
-        localStorage.removeItem("token");
-        navigate("/login");
+    const handleLogout = async () => {
+        try {
+            const token = localStorage.getItem("token");
+            const id = localStorage.getItem("id")
+            await axios.post(
+                `${process.env.REACT_APP_API_URL}/auth/logout`,
+                { id, token },
+                { headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" } }
+            );
+            localStorage.removeItem("token");
+            localStorage.removeItem("id")
+            setSuccessMessage("Logout successful!");
+            setTimeout(() => {
+                setSuccessMessage("");
+                navigate("/login");
+            }, 2000);
+        } catch (error) {
+            setError("Error logging out, clear session if possible");
+            setTimeout(() => {
+                setError("");
+            }, 2000);
+        }
     };
 
     return (
-        <div>
+        <div className="home-container">
             <h2>Dashboard</h2>
-            <button onClick={handleLogout}>Logout</button>
-            <h3>Mutual Funds</h3>
+            {error && <p className="error">{error}</p>}
+            {successMessage && <p className="success">{successMessage}</p>}
+            <div className="logout-button">
+                <button onClick={handleLogout}>Logout</button>
+            </div>
+            {/* <h3>Mutual Funds</h3> */}
             <ul>
                 {funds.map((fund, index) => (
                     <li key={index}>
