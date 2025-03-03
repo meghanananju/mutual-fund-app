@@ -1,4 +1,14 @@
 const jwt = require("jsonwebtoken");
+const verifyToken = async(req,res)=>{
+    
+    if(req){
+        jwt.verify(req, process.env.JWT_SECRET);
+        return true;
+    }else{
+        return res.status(400).json({ message: "Invalid token" })
+    }
+}
+ 
 
 const authenticate = (req, res, next) => {
     const authHeader = req.header("Authorization");
@@ -10,7 +20,7 @@ const authenticate = (req, res, next) => {
 
     try {
         const token = authHeader.split(" ")[1];
-        const verified = jwt.verify(token, process.env.JWT_SECRET);
+        const verified = verifyToken(token)
 
         req.user = verified;
         // Checking if the user has access to the current path
@@ -28,4 +38,4 @@ const authenticate = (req, res, next) => {
     }
 };
 
-module.exports = authenticate;
+module.exports = { authenticate , verifyToken};
