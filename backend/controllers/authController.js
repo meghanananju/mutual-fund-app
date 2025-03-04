@@ -44,6 +44,8 @@ exports.login = async (req, res) => {
 
         const token = jwt.sign({ id: userFound.id }, process.env.JWT_SECRET, { expiresIn: "2h" });
 const id = userFound.id
+console.log("id-----------",id);
+
         res.status(200).json({
             message: "Login successful",
             token,
@@ -62,12 +64,12 @@ const id = userFound.id
 
 exports.logout = async(req,res) =>{
     try{
-const{userId,token}= req.body;
-if(!userId || !token){
-    res.status(400).json({message:"Please provide userId"})
+const{id,token}= req.body;
+if(!id || !token){
+    res.status(400).json({message:"Please provide id"})
 }
 
-const checkValidUser = await user.findOne({where:{id:userId}});
+const checkValidUser = await user.findOne({where:{id:id}});
 
 const checkTokenValid = await verifyToken(token);
 

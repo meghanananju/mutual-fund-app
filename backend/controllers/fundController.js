@@ -45,7 +45,7 @@ exports.fetchFunds = async (req, res) => {
 
         res.json({ message: "Funds fetched successfully", fundData });
     } catch (error) {
-        console.error("Error fetching funds:", error);
+        // console.error("Error fetching funds:", error);
         res.status(400).json({ message: "Error fetching funds", error: error.message });
     }
 };

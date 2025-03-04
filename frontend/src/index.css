@@ -1,7 +1,7 @@
 body {
   margin: 0;
   padding: 0;
-  background-image: url('mutual_fund_login_page.jpg');
+  background-image: url('../public/mutual_funds_img2.png');
   background-size: cover;
   background-position: center;
   height: 100vh;
@@ -68,7 +68,7 @@ body {
   font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  width: auto;
+  width: 90%;
   box-sizing: border-box;
 }
 
@@ -199,7 +199,8 @@ body {
   font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  outline: none;
+  width: 90%;
+  box-sizing: border-box;
 }
 
 .signup-form button {

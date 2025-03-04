@@ -1,20 +1,19 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-
 const Signup = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [successMessage, setSuccessMessage] = useState('');
     const [error, setError] = useState("")
-    const navigate = useNavigate();
 
     const handleSignup = async (e) => {
         e.preventDefault();
         try {
             await axios.post(`${process.env.REACT_APP_API_URL}/auth/signup`, { email, password });
             setSuccessMessage("Signup successful! Please login.");
-            navigate("/login");
+            // navigate("/login");
+            window.location.replace('/login')
             setTimeout(() => {
                 setSuccessMessage('');
             }, 2000);
