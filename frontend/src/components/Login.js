@@ -20,7 +20,7 @@ const Login = () => {
             // Clear success message after 1 seconds
             setTimeout(() => {
                 setSuccessMessage('');
-            }, 1000);
+            }, 2000);
             navigate("/dashboard");
 
         } catch (error) {

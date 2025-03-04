@@ -11,12 +11,12 @@ const Signup = () => {
         e.preventDefault();
         try {
             await axios.post(`${process.env.REACT_APP_API_URL}/auth/signup`, { email, password });
-            setSuccessMessage("Signup successful! Please login.");
-            // navigate("/login");
-            window.location.replace('/login')
+           
             setTimeout(() => {
-                setSuccessMessage('');
+                setSuccessMessage('Signup successful! Please login.');
             }, 2000);
+            window.location.replace('/login')
+           
         } catch (error) {
             if (error.response.message) {
                 setError(error.response.message);

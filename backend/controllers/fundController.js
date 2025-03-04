@@ -1,8 +1,6 @@
 const axios = require("axios");
-const Fund = require("../models/fund");
 exports.fetchFunds = async (req, res) => {
     try {
-        console.log(req.body.fundFamily);
         const fundFamily = req.body.fundFamily;
 
 
