@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-
+import { IoIosEye, IoIosEyeOff } from "react-icons/io";
 
 const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [showPassword, setShowPassword] = useState("")
     const [successMessage, setSuccessMessage] = useState('');
     const [error, setError] = useState("")
     const navigate = useNavigate();
@@ -55,15 +56,24 @@ const Login = () => {
                         required
                     />
                 </div>
-                <div>
+                <div className="password-container">
                     <label htmlFor="password">Password:</label>
                     <input
-                        // type="text"
+                        type={showPassword ? "text" : "password"}
                         id="password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         required
                     />
+
+
+                    <span
+                        className="password-toggle"
+                        onClick={() => setShowPassword(!showPassword)}
+                    >
+                        {showPassword ? <IoIosEye /> : <IoIosEyeOff />}
+                    </span>
+
                 </div>
                 <div className="button-container">
                     <button type="submit">Login</button>

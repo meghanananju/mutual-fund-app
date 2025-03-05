@@ -46,22 +46,7 @@ body {
   justify-content: space-around;
 }
 
-/* .login-container form input {
 
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  outline: none;
-} */
-
-/* .login-container form {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  width: 100%;
-  max-width: 300px;
-} */
 
 .login-container form input {
   padding: 10px;
@@ -94,28 +79,60 @@ body {
 
 
 
+.password-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.password-input-wrapper input {
+  width: 100%;
+  padding-right: 40px;
+  font-size: 16px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 70px;
+  bottom: 29%;
+  font-size: 22px;
+  color: #555;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.password-toggle:hover {
+  color: #000;
+}
+
+
 .error-message {
   color: red;
-  font-weight: 600; 
+  font-weight: 600;
   font-size: 24px;
-  position: absolute; 
+  position: absolute;
   top: 100%;
-  left: 50%; 
+  left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
-  white-space: nowrap; 
+  white-space: nowrap;
 }
 
 .success-message {
-  color: rgb(133, 228, 133);
-  font-weight: 600; 
+  color: rgb(65, 150, 65);
+  font-weight: 900;
   font-size: 24px;
-  position: absolute; 
+  position: absolute;
   top: 100%;
-  left: 50%; 
+  left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
-  white-space: nowrap; 
+  white-space: nowrap;
+
 }
 
 
@@ -231,16 +248,16 @@ body {
   max-width: 1200px;
   background-color: #c3cbd4;
   opacity: 0.9;
-    padding: 2px;
+  padding: 2px;
 }
 
 .dashboard-controls {
   margin-bottom: 10px;
- 
+
 }
 
 .dashboard-controls label {
-  
+
   font-weight: bold;
   margin-right: 10px;
 }
@@ -256,20 +273,21 @@ body {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-table { 
+table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 2px;
 }
 
-th, td {
+th,
+td {
   padding: 2px;
   text-align: left;
   border-bottom: 1px solid #ddd;
 }
 
 th {
- 
+
   background-color: #d4d8dc;
   font-weight: bold;
   color: #333;
@@ -292,6 +310,5 @@ tr:hover {
 }
 
 .logout-button:hover {
- transform: scale(0.8);
+  transform: scale(0.8);
 }
-
